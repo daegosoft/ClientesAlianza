@@ -31,11 +31,11 @@ export class BaseService {
     return this.http.post(this.urlResources + url, httpOptions);
   }
 
-  protected postServiceObservableP(url: string, body): Observable<any> {
+  protected postServiceObservableP(url: string, body: any): Observable<any> {
     return this.http.post(this.urlResources + url, body, httpOptions);
   }
 
-  protected postServiceObservableParams(url: string, body, params: HttpParams): Observable<any> {
+  protected postServiceObservableParams(url: string, body: any, params: HttpParams): Observable<any> {
     return this.http.post(this.urlResources + url, body, {headers: httpOptions.headers, params});
   }
 
@@ -43,7 +43,7 @@ export class BaseService {
     return this.http.put(this.urlResources + url, httpOptions);
   }
 
-  protected putServiceObservableP(url: string, body): Observable<any> {
+  protected putServiceObservableP(url: string, body: any): Observable<any> {
     return this.http.put(this.urlResources + url, body, httpOptions);
   }
 

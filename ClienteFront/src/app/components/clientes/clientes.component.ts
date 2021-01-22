@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { ClienteService } from 'src/app/services/Cliente/cliente.service';
 
 @Component({
   selector: 'app-clientes',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesComponent implements OnInit {
 
-  constructor() { }
+  clientes: Cliente[] = [];
+
+  constructor(private service: ClienteService, private messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.obtenerClientes();
+  }
+
+  obtenerClientes(){
+    this.service.obtenerClientes()
+    .subscribe( data =>{
+      this.clientes = data;
+    }, err =>{
+      this.messageService.add({severity: 'error', summary: 'Error', detail: err});
+    });
   }
 
 }
